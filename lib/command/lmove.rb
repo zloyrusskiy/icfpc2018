@@ -10,7 +10,7 @@ module Command
 		end
 
 		def to_binary
-			[(@sld2.a << 6) ^ (@sld1.a << 4) ^ 0b1100, (sld2.i << 4) ^ (sld1.i << 4)]
+			[(@sld2.a << 6) ^ (@sld1.a << 4) ^ 0b1100, (@sld2.i << 4) ^ @sld1.i]
 		end
 
 		def valid? state
