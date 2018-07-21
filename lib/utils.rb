@@ -11,31 +11,30 @@ module Utils
 		[]
 	end
 
-	def self.draw_layer bot, matrix, left_top_2d_point, right_bottom_2d_point
+	def self.draw_layer bot, matrix, left_bottom_2d_point, right_top_2d_point
 		commands = []
 
+		need_cells_qty = (right_top_2d_point.x - left_bottom_2d_point.x + 1) * (right_top_2d_point.z - left_bottom_2d_point.z + 1)
 		direction_delta = 1
-		while bot.x <= right_bottom_2d_point.x
-			while (
-				(direction_delta == 1 and bot.z <= right_bottom_2d_point.z) or
-				(direction_delta == -1 and bot.z >= left_top_2d_point.z)
-			)
-				if matrix[bot.z][bot.x] == '1'
-					commands << Command::Fill.new(PointDiff::Near.new(0, -1, 0))
-				end
-
-				commands << Command::SMove.new(PointDiff::Long.new(0, 0, direction_delta))
-				bot.z += direction_delta
+		1.upto(need_cells_qty) do
+			if matrix[bot.position.z][bot.position.x] == 1
+				commands << Command::Fill.new(PointDiff::Near.new(0, -1, 0))
 			end
 
-			commands.pop
-			bot.z -= direction_delta
-			commands << Command::SMove.new(PointDiff::Long.new(1, 0, 0))
-			bot.x += 1
-			direction_delta = -direction_delta
+			if (
+				(direction_delta == 1 and bot.position.z < right_top_2d_point.z) or
+				(direction_delta == -1 and bot.position.z > left_bottom_2d_point.z)
+				)
+				commands << Command::SMove.new(PointDiff::Long.new(0, 0, direction_delta))
+				bot.position.z += direction_delta
+			else
+				commands << Command::SMove.new(PointDiff::Long.new(1, 0, 0))
+				bot.position.x += 1
+				direction_delta = -direction_delta
+			end
 		end
+
 		commands.pop
-		bot.x -= 1
 
 		commands
 	end

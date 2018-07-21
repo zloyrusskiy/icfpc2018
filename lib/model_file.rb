@@ -68,6 +68,7 @@ module ModelFile
     points = fill_bits
                  .chars
                  .drop(excess_bits_qty)
+                 .map(&:to_i)
                  .each_slice(dimensions)
                  .each_slice(dimensions)
                  .to_a
