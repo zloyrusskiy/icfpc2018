@@ -31,7 +31,7 @@ ARGF.readlines.each.with_index do |line, index|
 	when 'lmove'
 		sd1 = PointDiff::Short.from_s args[0]
 		sd2 = PointDiff::Short.from_s args[1]
-		Command::Lmove.new(sd1, sd2)
+		Command::LMove.new(sd1, sd2)
 	when 'smove'
 		ld = PointDiff::Long.from_s args.first
 		Command::SMove.new(ld)
@@ -43,5 +43,6 @@ ARGF.readlines.each.with_index do |line, index|
 end
 
 binary_commands = commands.map(&:to_binary).flatten
+# pp binary_commands.map { |i| i.to_s(2) }
 bin_output = binary_commands.pack('C*')
 $stdout.write(bin_output)
