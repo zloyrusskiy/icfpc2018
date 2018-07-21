@@ -8,7 +8,7 @@ commands = []
 ARGF.readlines.each.with_index do |line, index|
 	cmd, *args = line.strip.split(' ')
 
-	continue if cmd == ''
+	next if cmd == '' or cmd.nil?
 
 	commands << case cmd.downcase
 	when 'fill'
