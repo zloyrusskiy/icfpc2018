@@ -15,7 +15,7 @@ class Voxel
   end
 
   def self.full?(cell)
-    cell == '1'
+    cell.to_s == '1'
   end
 
   def point
