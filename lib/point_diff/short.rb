@@ -20,11 +20,11 @@ module PointDiff
     def i
       case
       when @dx != 0 then
-        @dx + 5
+        @dx + LONG_DISTANCE
       when @dy != 0 then
-        @dy + 5
+        @dy + LONG_DISTANCE
       when @dz != 0 then
-        @dz + 5
+        @dz + LONG_DISTANCE
       else
         raise 'strange short diff i value'
       end

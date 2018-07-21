@@ -1,6 +1,8 @@
 module PointDiff
   class Base
     attr_reader :dx, :dy, :dz
+    LONG_DISTANCE = 15
+    SHORT_DISTANCE = 5
 
     def initialize(dx, dy, dz)
       @dx = dx
@@ -34,11 +36,11 @@ module PointDiff
     end
 
     def sld?
-      mlen <= 5
+      mlen <= SHORT_DISTANCE
     end
 
     def lld?
-      mlen <= 15
+      mlen <= LONG_DISTANCE
     end
 
     def near?
