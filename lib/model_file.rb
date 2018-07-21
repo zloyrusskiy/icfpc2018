@@ -1,24 +1,40 @@
-Model = Struct.new(:dimensions, :points) do
+Model = Struct.new(:dimensions, :points, :view_type) do
 	def print
-		points.each.with_index do |matrix, ind|
-			matrix_header = "  -- ##{ind} --"
-			matrix_output = ''
+		if view_type and view_type == 'simple_view'
+			puts "#{dimensions}"
+			points.each.with_index do |matrix, ind|
+				matrix_header = ""
+				matrix_output = ''
 
-			matrix.each do |row|
-				matrix_output += row.join() + "\n"
+				matrix.each do |row|
+					matrix_output += row.join() + "\n"
+				end
+
+				if matrix_output.include? '1'
+					puts matrix_header + "" + matrix_output + ""
+				end
+			end
+		else
+			points.each.with_index do |matrix, ind|
+				matrix_header = "  -- ##{ind} --"
+				matrix_output = ''
+
+				matrix.each do |row|
+					matrix_output += row.join() + "\n"
+				end
+
+				if matrix_output.include? '1'
+					puts matrix_header + "\n" + matrix_output + "\n"
+				end
 			end
 
-			if matrix_output.include? '1'
-				puts matrix_header + "\n" + matrix_output + "\n"
-			end
+			puts "  -- dimensions: #{dimensions} --"
 		end
-
-		puts "  -- dimensions: #{dimensions} --"
 	end
 end
 
 module ModelFile
-	def self.parse_file filepath
+	def self.parse_file filepath, view_type
 		model_data = File.binread(filepath)
 		dimensions, fill_bits = model_data.unpack('Cb*')
 		total_fill_bits = dimensions ** 3
@@ -35,6 +51,6 @@ module ModelFile
 			.map(&:transpose)
 			.map(&:reverse)
 
-		Model.new(dimensions, points)
+		Model.new(dimensions, points, view_type)
 	end
 end
