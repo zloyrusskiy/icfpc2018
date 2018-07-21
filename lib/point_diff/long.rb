@@ -1,26 +1,33 @@
 module PointDiff
-	class Long < Base
-		def valid?
-		end
+  class Long < Base
+    def valid?
+      lld?
+    end
 
-		def a
-			case
-			when @x != 0 then 0b01
-			when @y != 0 then 0b10
-			when @z != 0 then 0b11
-			else
-				raise 'strange long diff a value'
-			end
-		end
+    def a
+      case
+      when @dx != 0 then
+        0b01
+      when @dy != 0 then
+        0b10
+      when @dz != 0 then
+        0b11
+      else
+        raise 'strange long diff a value'
+      end
+    end
 
-		def i
-			case
-			when @x != 0 then @x + 15
-			when @y != 0 then @y + 15
-			when @z != 0 then @z + 15
-			else
-				raise 'strange long diff i value'
-			end
-		end
-	end
+    def i
+      case
+      when @dx != 0 then
+        @dx + 15
+      when @dy != 0 then
+        @dy + 15
+      when @dz != 0 then
+        @dz + 15
+      else
+        raise 'strange long diff i value'
+      end
+    end
+  end
 end

@@ -1,23 +1,25 @@
-require 'distance'
-
 class Point
-	attr_reader :x, :y, :z
+  attr_reader :x, :y, :z
 
-	def initialize x, y, z
-		@x = x
-		@y = y
-		@z = z
-	end
+  def initialize(x, y, z)
+    @x = x
+    @y = y
+    @z = z
+  end
 
-	def near_diff point
-		Distance::NearDiff.new(self, point)
-	end
+  def to_s
+    "<#{@x},#{@y},#{@z}>"
+  end
 
-	def short_diff point
-		Distance::ShortDiff.new(self, point)
-	end
+  def near_diff(point)
+    PointDiff::Near.calc_diff(self, point)
+  end
 
-	def long_diff point
-		Distance::LongDiff.new(self, point)
-	end
+  def short_diff(point)
+    PointDiff::Short.calc_diff(self, point)
+  end
+
+  def long_diff(point)
+    PointDiff::Long.calc_diff(self, point)
+  end
 end
