@@ -73,7 +73,7 @@ module ModelFile
                  .to_a
                  .transpose
                  .map(&:transpose)
-                 .map(&:reverse)
+                 # .map(&:reverse) # z вверху
 
     Model.new(dimensions, points)
   end
