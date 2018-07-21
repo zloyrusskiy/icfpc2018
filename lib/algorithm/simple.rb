@@ -1,6 +1,7 @@
 require 'utils'
 require 'command'
 require 'point'
+require 'bot'
 
 module Algorithm
 	class Simple
@@ -9,7 +10,7 @@ module Algorithm
 		end
 
 		def solve model
-			bot = Bot.new
+			bot = Bot.new(Point.new(0,0,0))
 
 			@commands += prepare_state()
 
