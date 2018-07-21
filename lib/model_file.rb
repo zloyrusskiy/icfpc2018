@@ -1,7 +1,7 @@
 require 'voxel'
 
-Model = Struct.new(:dimensions, :points, :view_type) do
-  def print
+Model = Struct.new(:dimensions, :points) do
+  def print view_type = nil
     if view_type && (view_type == 'simple_view')
       puts dimensions.to_s
       points.each.with_index do |matrix, _ind|
@@ -58,7 +58,7 @@ Model = Struct.new(:dimensions, :points, :view_type) do
 end
 
 module ModelFile
-  def self.parse_file(filepath, view_type)
+  def self.parse_file(filepath)
     model_data = File.binread(filepath)
     dimensions, fill_bits = model_data.unpack('Cb*')
     total_fill_bits = dimensions ** 3
@@ -75,6 +75,6 @@ module ModelFile
                  .map(&:transpose)
                  .map(&:reverse)
 
-    Model.new(dimensions, points, view_type)
+    Model.new(dimensions, points)
   end
 end

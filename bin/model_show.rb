@@ -7,5 +7,5 @@ model_path = ARGV.first
 view_type = ARGV[1]
 abort "USAGE: #{$0} <filepath>" unless model_path
 
-model = ModelFile.parse_file(model_path, view_type)
-model.print
+model = ModelFile.parse_file(model_path)
+model.print view_type

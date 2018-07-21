@@ -7,7 +7,7 @@ require 'command'
 model_path = ARGV.first
 abort "USAGE: #{$0} <filepath>" unless model_path
 
-model = ModelFile.parse_file(model_path, view_type)
+model = ModelFile.parse_file(model_path)
 commands = Algorithm::Simple.solve(model)
 
 Command.print_commands(commands)
