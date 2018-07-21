@@ -4,29 +4,29 @@ Model = Struct.new(:dimensions, :points) do
   def print view_type = nil
     if view_type && (view_type == 'simple_view')
       puts dimensions.to_s
-      points.each.with_index do |matrix, _ind|
-        matrix_header = ''
-        matrix_output = ''
+      points.each do |layer|
+        layer_header = ''
+        layer_output = ''
 
-        matrix.each do |row|
-          matrix_output += row.join + "\n"
+        layer.each do |row|
+          layer_output += row.join + "\n"
         end
 
-        if matrix_output.include? '1'
-          puts matrix_header + '' + matrix_output + ''
+        if layer_output.include? '1'
+          puts layer_header + '' + layer_output + ''
         end
       end
     else
-      points.each.with_index do |matrix, ind|
-        matrix_header = "  -- ##{ind} --"
-        matrix_output = ''
+      points.each.with_index do |layer, y|
+        layer_header = "  -- ##{y} --"
+        layer_output = ''
 
-        matrix.each do |row|
-          matrix_output += row.join + "\n"
+        layer.each do |row|
+          layer_output += row.join + "\n"
         end
 
-        if matrix_output.include? '1'
-          puts matrix_header + "\n" + matrix_output + "\n"
+        if layer_output.include? '1'
+          puts layer_header + "\n" + layer_output + "\n"
         end
       end
 
@@ -34,27 +34,31 @@ Model = Struct.new(:dimensions, :points) do
     end
   end
 
-  def get_voxel(point)
-    Voxel.new(point.x, point.y, point.z, Voxel.full?(points[point.x][point.y][point.z]))
+  def voxel(point)
+    Voxel.new(point.x, point.y, point.z, Voxel.full?(points[point.y][point.z][point.x]))
   end
 
-  def get_filled_voxels
-    voxels = []
-    points.each.with_index do |matrix, matrix_index|
-      matrix.each.with_index do |row, row_index|
-        voxels.concat(
+  def voxels
+    vxls = []
+    points.each.with_index do |layer, y|
+      layer.each.with_index do |row, z|
+        vxls.concat(
             row
                 .map
                 .with_index
-                .select {|cell, _cell_index| Voxel.full?(cell)}
-                .map do |_cell, cell_index|
-              Voxel.new(matrix_index, row_index, cell_index, true)
+                .map do |cell, x|
+              Voxel.new(x, y, z, Voxel.full?(cell))
             end
         )
       end
     end
-    voxels
+    vxls
   end
+
+  def filled_voxels
+    voxels.select {|voxel| voxel.full}
+  end
+
 end
 
 module ModelFile
