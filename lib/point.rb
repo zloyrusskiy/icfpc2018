@@ -7,6 +7,10 @@ class Point
     @z = z
   end
 
+  def self.from_2d_point(point_2d, y_coord)
+    self.new point_2d.x, y_coord, point_2d.z
+  end
+
   def to_s
     "<#{@x},#{@y},#{@z}>"
   end
