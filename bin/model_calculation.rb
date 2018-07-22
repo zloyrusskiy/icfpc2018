@@ -20,10 +20,10 @@ models.extend(MultithreadedEach)
 
 models.multithreaded_each do |model|
   model_name = model.split("/").last
-  model_show_cmd = "ruby model_show.rb '#{model}' simple_view"
+  model_show_cmd = "ruby " + __dir__ + "/model_show.rb '#{model}' simple_view"
   optimizer_type = model_name.start_with?("FA") ? "construct" : (model_name.start_with?("FD") ? "deconstruct" : "")
-  dotnet_optimizer_cmd = "dotnet ../c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.dll #{optimizer_type}"
-  ruby_trace_to_text_cmd = "ruby trace_text_to_binary.rb > #{traces_path}/#{model_name.gsub("_tgt", "").gsub(".mdl", ".nbt")}"
+  dotnet_optimizer_cmd = "dotnet " + __dir__ + "/../c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.dll #{optimizer_type}"
+  ruby_trace_to_text_cmd = "ruby " + __dir__ + "/trace_text_to_binary.rb > #{traces_path}/#{model_name.gsub("_tgt", "").gsub(".mdl", ".nbt")}"
   command = "#{model_show_cmd} | #{dotnet_optimizer_cmd} | #{ruby_trace_to_text_cmd}"
   start_time = Time.now
   puts "#{model} (#{start_time}) STARTED.\n"

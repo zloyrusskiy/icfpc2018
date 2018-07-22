@@ -1,6 +1,10 @@
 .DS_Store
 
 /data/traces/
+/c_sharp/src/TraceOptimizer/bin/
+/c_sharp/src/TraceOptimizer/obj/
+/c_sharp/test/TraceOptimizer.Tests/obj/
+/c_sharp/test/TraceOptimizer.Tests/bin/
 
 *.gem
 *.rbc
