@@ -40,6 +40,12 @@ namespace TraceOptimizer.Optimization
             {
                 Console.WriteLine("Wait");
             }
+
+            public override void Visit(VoidCommand command)
+            {
+                var p = command.Nd;
+                Console.WriteLine($"Void <{p.X},{p.Y},{p.Z}>");
+            }
         }
 
         public void Serialize(BotProgram program)

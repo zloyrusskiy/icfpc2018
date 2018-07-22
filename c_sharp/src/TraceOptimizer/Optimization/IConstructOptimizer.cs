@@ -2,7 +2,7 @@ using TraceOptimizer.Domain;
 
 namespace TraceOptimizer.Optimization
 {
-    public interface IOptimizer
+    public interface IConstructOptimizer
     {
         BotProgram Optimize(Model3D modelToBuild);
     }

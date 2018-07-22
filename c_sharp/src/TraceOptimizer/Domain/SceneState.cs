@@ -56,5 +56,21 @@ namespace TraceOptimizer.Domain
 
             return sceneState;
         }
+
+        public static SceneState FromMatrix(Matrix matrix)
+        {
+            var sceneState = new SceneState
+            {
+                Energy = 0,
+                HarmonicsMode = HarmonicsMode.Grounded,
+                Matrix = matrix,
+            };
+
+            sceneState.Bots = new SortedSet<NanoBot>(
+                new[] { NanoBot.Initial() },
+                new NanoBotComparer());
+
+            return sceneState;
+        }
     }
 }

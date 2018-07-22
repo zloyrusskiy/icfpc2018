@@ -9,6 +9,10 @@ namespace TraceOptimizer.Domain
 {
     public sealed class Scene
     {
+        private Scene()
+        {
+
+        }
         private Scene(int resolution)
         {
             SceneState = SceneState.New(resolution);
@@ -137,6 +141,14 @@ namespace TraceOptimizer.Domain
         public static Scene New(int resolution)
         {
             return new Scene(resolution);
+        }
+
+        public static Scene FromModel(Model3D model)
+        {
+            return new Scene
+            {
+                SceneState = SceneState.FromMatrix(model.Matrix)
+            };
         }
     }
 }

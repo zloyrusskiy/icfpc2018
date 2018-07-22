@@ -31,5 +31,10 @@ namespace TraceOptimizer.Optimization.Commands
         {
             return default(T);
         }
+
+        public virtual T Visit(VoidCommand command)
+        {
+            return default(T);
+        }
     }
 }

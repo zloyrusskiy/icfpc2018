@@ -11,8 +11,25 @@ namespace TraceOptimizer
             var modelProvider = new Model3DFromStdinProvider();
             var model = modelProvider.GetModel();
 
-            var optimizer = new OptimizerV1();
-            var program = optimizer.Optimize(model);
+            BotProgram program;
+            var action = args[0];
+
+            switch (action)
+            {
+                case "construct":
+                    var constructor = new ConstructOptimizerV1();
+                    program = constructor.Optimize(model);
+                    break;
+
+                case "deconstruct":
+                    var deconstructor = new DeconstructOptimizerV1();
+                    program = deconstructor.Optimize(model);
+                    break;
+
+                default:
+                    Console.WriteLine($"Unsupported parameter: {action}");
+                    return;
+            }
 
             var serializer = new BotProgramToStdoutSerializer();
             serializer.Serialize(program);

@@ -10,7 +10,7 @@ using TraceOptimizer.Voxels;
 
 namespace TraceOptimizer.Optimization
 {
-    public class OptimizerV1 : IOptimizer
+    public class ConstructOptimizerV1 : IConstructOptimizer
     {
         private Scene _scene;
 

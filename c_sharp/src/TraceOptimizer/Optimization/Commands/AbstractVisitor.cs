@@ -13,5 +13,7 @@ namespace TraceOptimizer.Optimization.Commands
         public abstract void Visit(StraightMoveCommand command);
 
         public abstract void Visit(WaitCommand command);
+
+        public abstract void Visit(VoidCommand command);
     }
 }
