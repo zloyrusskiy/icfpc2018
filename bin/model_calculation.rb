@@ -2,7 +2,7 @@
 # 2 args: first - path to folder with models, second - path to folder with calculated traces
 
 require "etc"
-require "Parallel"
+require "parallel"
 
 threads = []
 models_path = ARGV.first
