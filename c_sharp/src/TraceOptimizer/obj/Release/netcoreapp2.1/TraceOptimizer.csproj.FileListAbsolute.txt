@@ -1,0 +1,11 @@
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.deps.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.runtimeconfig.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.runtimeconfig.dev.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.pdb
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.csprojAssemblyReference.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.csproj.CoreCompileInputs.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.AssemblyInfoInputs.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.AssemblyInfo.cs
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/src/TraceOptimizer/obj/Release/netcoreapp2.1/TraceOptimizer.pdb

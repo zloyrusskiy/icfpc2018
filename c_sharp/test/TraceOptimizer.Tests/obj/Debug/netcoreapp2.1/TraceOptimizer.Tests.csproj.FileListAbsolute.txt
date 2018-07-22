@@ -1,0 +1,17 @@
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/xunit.runner.visualstudio.dotnetcore.testadapter.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/xunit.runner.reporters.netcoreapp10.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/xunit.runner.utility.netcoreapp10.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.Tests.deps.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.Tests.runtimeconfig.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.Tests.runtimeconfig.dev.json
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.Tests.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.Tests.pdb
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/bin/Debug/netcoreapp2.1/TraceOptimizer.pdb
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.csprojAssemblyReference.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.csproj.CoreCompileInputs.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.AssemblyInfoInputs.cache
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.AssemblyInfo.cs
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.csproj.CopyComplete
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.dll
+/Users/denis/Documents/Programming/Contests/ICFPC2018/c_sharp/test/TraceOptimizer.Tests/obj/Debug/netcoreapp2.1/TraceOptimizer.Tests.pdb
