@@ -97,5 +97,7 @@ q.subscribe(manual_ack: true, block: true) do |delivery_info, properties, payloa
       err: $!.inspect
     }
     x.publish(JSON.generate(msg), routing_key: q_err.name, content_type: 'text/json')
+
+    sleep 1
   end
 end
