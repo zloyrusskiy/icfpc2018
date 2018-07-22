@@ -28,6 +28,22 @@ namespace TraceOptimizer.Geometry
             (X == 0 && Y != 0 && Z == 0) ||
             (X == 0 && Y == 0 && Z != 0);
 
+        public bool IsLinearlySame(Vector3D other) =>
+            this.IsLinear &&
+            other.IsLinear &&
+            !(X != 0 ^ other.X != 0) &&
+            !(Y != 0 ^ other.Y != 0) &&
+            !(Z != 0 ^ other.Z != 0);
+
+        public bool IsLinearlyDifferent(Vector3D other) =>
+            this.IsLinear &&
+            other.IsLinear &&
+            (
+                (X != 0 ^ other.X != 0) ||
+                (Y != 0 ^ other.Y != 0) ||
+                (Z != 0 ^ other.Z != 0)
+            );
+
         public bool IsShortLinear =>
             IsLinear && ManhattanLength <= 5;
 

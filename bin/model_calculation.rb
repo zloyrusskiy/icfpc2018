@@ -16,8 +16,9 @@ Parallel.each(models, in_threads: Etc.nprocessors) do |model|
   model_show_cmd = "ruby " + __dir__ + "/model_show.rb '#{model}' simple_view"
   optimizer_type = model_name.start_with?("FA") ? "construct" : (model_name.start_with?("FD") ? "deconstruct" : "")
   dotnet_optimizer_cmd = "dotnet " + __dir__ + "/../c_sharp/src/TraceOptimizer/bin/Release/netcoreapp2.1/TraceOptimizer.dll #{optimizer_type}"
-  ruby_trace_to_text_cmd = "ruby " + __dir__ + "/trace_text_to_binary.rb > #{traces_path}/#{model_name.gsub("_tgt", "").gsub(".mdl", ".nbt")}"
+  ruby_trace_to_text_cmd = "ruby " + __dir__ + "/trace_text_to_binary.rb > #{traces_path}/#{model_name.gsub("_tgt", "").gsub("_src", "").gsub(".mdl", ".nbt")}"
   command = "#{model_show_cmd} | #{dotnet_optimizer_cmd} | #{ruby_trace_to_text_cmd}"
+  # command = "#{model_show_cmd} | #{dotnet_optimizer_cmd} > 1.txt "
   start_time = Time.now
   puts "#{model} (#{Parallel.worker_number}) (#{start_time}) STARTED.\n"
   system command

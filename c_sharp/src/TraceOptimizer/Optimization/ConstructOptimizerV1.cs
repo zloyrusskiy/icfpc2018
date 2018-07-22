@@ -18,6 +18,8 @@ namespace TraceOptimizer.Optimization
 
         private Model3D _model;
 
+        private IMovementOptimizer _movementOptimizer = new MovementOptimizerV1();
+
         private int _voxelsToFill;
 
         private int _currentYLevel;
@@ -64,6 +66,12 @@ namespace TraceOptimizer.Optimization
             MoveBotToPoint(Point3D.Origin());
 
             HaltProgram();
+
+            OptimizeProgram();
+        }
+
+        private void OptimizeProgram() {
+            _program = new BotProgram(_movementOptimizer.OptimizeSMoves(_program.Commands.ToList()));
         }
 
         private void HaltProgram()
