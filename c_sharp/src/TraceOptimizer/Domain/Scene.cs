@@ -42,6 +42,93 @@ namespace TraceOptimizer.Domain
                 .ToArray();
         }
 
+        public Cuboid[] GetObstaclesAgainstStraightMove(Point3D source)
+        {
+            var vector = Vector3D.FromPoint(source);
+            var padBoundBox = PadBoundBox;
+            var obstacles = new List<Cuboid>();
+
+            foreach (var dx in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(dx, 0, 0));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            foreach (var dx in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(-dx, 0, 0));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            foreach (var dy in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(0, dy, 0));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            foreach (var dy in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(0, -dy, 0));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            foreach (var dz in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(0, 0, dz));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            foreach (var dz in Enumerable.Range(1, 15))
+            {
+                var newVector = vector + Vector3D.FromPoint(new Point3D(0, 0, -dz));
+                var newPoint = newVector.ToPoint();
+
+                if (padBoundBox.Contains(newPoint) &&
+                    this.SceneState.Matrix[newPoint] == VoxelStatus.Full)
+                {
+                    obstacles.Add(Cuboid.FromPoints(newPoint, newPoint));
+                    break;
+                }
+            }
+
+            return obstacles.ToArray();
+        }
+
         public int FilledVoxelsCount()
         {
             return SceneState.Matrix.FullVoxels().Count();

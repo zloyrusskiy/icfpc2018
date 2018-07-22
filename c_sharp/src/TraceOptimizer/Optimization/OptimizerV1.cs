@@ -85,12 +85,17 @@ namespace TraceOptimizer.Optimization
         {
             var bot = _scene.GetFirstBot();
 
-            var obstacles = _scene.GetObstacles();
-            var path = PathFinder.FindPathBetween(
+            // var obstacles = _scene.GetObstacles();
+            // var path = PathFinder.FindPathBetween(
+            //     bot.Current,
+            //     voxelPoint,
+            //     _scene.PadBoundBox,
+            //     obstacles);
+
+            var path = PathFinder.FindPathBetweenWithOnlyStraightMoves(
                 bot.Current,
                 voxelPoint,
-                _scene.PadBoundBox,
-                obstacles);
+                _scene);
 
             foreach (var command in path)
             {
