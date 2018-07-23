@@ -38,7 +38,8 @@ def process_task model_index, type, src, tgt
   end
 
   optimizer_type = case type
-    when 'A' then 'construct'
+    when 'A' && model_index <= 100 then 'construct'
+    when 'A' && model_index > 100 then 'construct_v2'
     when 'D' then 'deconstruct'
     when 'R' then 'reconstruct'
   end
