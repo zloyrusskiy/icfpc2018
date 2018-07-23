@@ -68,6 +68,9 @@ q_err = ch.queue('errors', auto_delete: false)
 q_res = ch.queue('results', auto_delete: false, durable: true)
 x = ch.default_exchange
 
+# первый аргумент командной строки вида AR
+allowed_tasks = ARGV.first && ARGV.first.chars
+
 q.subscribe(manual_ack: true, block: true) do |delivery_info, properties, payload|
   begin
     data = JSON.parse(payload)
@@ -76,6 +79,12 @@ q.subscribe(manual_ack: true, block: true) do |delivery_info, properties, payloa
     model_index = data['ind']
 
     puts "got #{type} #{model_index}"
+
+    unless allowed_tasks.include? type
+      ch.reject(delivery_info.delivery_tag, true)
+      sleep 0.5
+      return
+    end
 
     tgt = data['tgt'] && Base64.decode64(data['tgt'])
     src = data['src'] && Base64.decode64(data['src'])
