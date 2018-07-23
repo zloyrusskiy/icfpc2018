@@ -61,12 +61,13 @@ conn.start
 at_exit { conn.close }
 
 ch = conn.create_channel
+ch.prefetch(1)
 q = ch.queue('tasks', auto_delete: false, durable: true)
 q_err = ch.queue('errors', auto_delete: false)
 q_res = ch.queue('results', auto_delete: false, durable: true)
 x = ch.default_exchange
 
-q.subscribe(manual_ack: true, block: true) do |delivery_info, properties, payload|
+q.subscribe(manual_ack: true) do |delivery_info, properties, payload|
   begin
     data = JSON.parse(payload)
 
