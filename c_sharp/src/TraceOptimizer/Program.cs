@@ -21,6 +21,12 @@ namespace TraceOptimizer
                     program = constructor.Optimize(modelToConstruct);
                     break;
 
+                case "construct_v2":
+                    var modelToConstructV2 = modelProvider.GetModel();
+                    var constructorV2 = new ConstructOptimizerV2();
+                    program = constructorV2.Optimize(modelToConstructV2);
+                    break;
+
                 case "deconstruct":
                     var modelToDeconstruct = modelProvider.GetModel();
                     var deconstructor = new DeconstructOptimizerV1();

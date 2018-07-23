@@ -15,6 +15,11 @@ namespace TraceOptimizer.Geometry
 
         public Point3D MaxPoint { get; }
 
+        public int Size =>
+            (MaxPoint.X - MinPoint.X + 1) *
+            (MaxPoint.Y - MinPoint.Y + 1) *
+            (MaxPoint.Z - MinPoint.Z + 1);
+
         public Dimension Dimension
         {
             get
@@ -44,6 +49,18 @@ namespace TraceOptimizer.Geometry
         {
             for (var x = MinPoint.X; x <= MaxPoint.X; x++)
                 for (var y = MinPoint.Y; y <= MaxPoint.Y; y++)
+                    for (var z = MinPoint.Z; z <= MaxPoint.Z; z++)
+                    {
+                        yield return new Point3D(x, y, z);
+                    }
+        }
+
+        public IEnumerable<Point3D> PointsFromBottomToTopSnake()
+        {
+            var vector = Vector3D.FromPoint(MinPoint);
+
+            for (var y = MinPoint.Y; y <= MaxPoint.Y; y++)
+                for (var x = MinPoint.X; x <= MaxPoint.X; x++)
                     for (var z = MinPoint.Z; z <= MaxPoint.Z; z++)
                     {
                         yield return new Point3D(x, y, z);
