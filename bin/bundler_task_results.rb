@@ -18,7 +18,7 @@ ch = conn.create_channel
 ch.prefetch(1)
 q  = ch.queue('results', auto_delete: false, durable: true)
 
-q.subscribe(manual_ack: true) do |delivery_info, properties, payload|
+q.subscribe(manual_ack: true, block: true) do |delivery_info, properties, payload|
   puts "got #{payload}"
 
   data = JSON.parse(payload)
